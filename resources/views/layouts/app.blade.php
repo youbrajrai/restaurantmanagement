@@ -29,13 +29,16 @@
     <link href="{{asset('assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">    
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">  
+    <!-- Data tables CSS File --> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">  
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
+    
     <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
 </head>
 <body>
@@ -53,9 +56,24 @@
     <script src="{{asset('assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
     <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{asset('assets/js/main.js')}}"></script>    
+    <script src="{{asset('assets/js/main.js')}}"></script> 
+
+    <!-- Datatable -->
+    <script type="text/javascript">
+        $(document).ready( function () {
+           $('#table').DataTable();
+        } );
+    </script>
+    <script>
+        CKEDITOR.replace( 'content' );
+    </script>    
+    
 </body>
 
 </html>
