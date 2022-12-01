@@ -11,14 +11,14 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="">
           <i class="bi bi-person"></i>
           <span>Users</span>
         </a>
       </li><!-- End User Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
+        <a class="nav-link collapsed" href="{{url('category')}}">
           <i class="bi bi-bookmark"></i>
           <span>Categories</span>
         </a>
@@ -50,21 +50,15 @@
           <i class="bi bi-box2-heart"></i>
           <span>Banner</span>
         </a>
-      </li><!-- End Login Page Nav -->
+      </li><!-- End Banner Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-error-404.html">
           <i class="bi bi-people-fill"></i>
           <span>Teams</span>
         </a>
-      </li><!-- End Error 404 Page Nav -->
+      </li><!-- End Error Teams Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
-        </a>
-      </li><!-- End Blank Page Nav -->
 
     </ul>
 
