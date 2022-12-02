@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+
 class CategoryController extends Controller
 {
     /**
@@ -25,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.add');
     }
 
     /**
@@ -36,7 +37,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = array(
+            'title'=> $request->title,
+        );
+        $create = Category::create($data);
+        return redirect()->back()->with('message', 'Category added successfully.');
     }
 
     /**
@@ -58,7 +63,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $id = $category->id;
+        $category = Category::findOrFail($id);
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -70,7 +77,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $id = $category->id;
+        $categories = Category::find($id);
+        $data = array(
+            'title'=> $request->title,
+        );
+        $create = Category::where('id',$id)->update($data);
+        
+        return redirect()->back()->with('message', 'Category updated successfully.');
     }
 
     /**
@@ -79,8 +93,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request,Category $category)
     {
-        //
+        $id = $category->id;
+        $categories = Category::findOrFail($id);
+        $categories->delete();
+        return redirect()->back()->with('message', 'Category deleted successfully.');
     }
 }
