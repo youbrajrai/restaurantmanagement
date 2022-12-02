@@ -42,10 +42,10 @@
     <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
 </head>
 <body>
-        @yield('navbar')
-        @yield('sidebar')
-        @yield('content')
-        @yield('footer')       
+        <x-navbar />
+        <x-sidebar />
+        {{$slot}}
+        <x-footer />       
 
     <!-- Vendor JS Files -->
     <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
