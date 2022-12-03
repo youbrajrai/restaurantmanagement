@@ -1,9 +1,18 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layout>
+<main id="main" class="main">
+<div class="pagetitle">
+  <h1>User</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+      <li class="breadcrumb-item">Dashboard</li>
+      <li class="breadcrumb-item active">User</li>
+      <li class="breadcrumb-item active">Create</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -72,6 +81,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
-@endsection
+</main>
+</x-layout>

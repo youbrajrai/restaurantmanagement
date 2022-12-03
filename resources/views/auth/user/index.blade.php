@@ -14,9 +14,11 @@
         <div class="card">
             <div class="card-header left">
                 <h4 class="card-title pull-left"> Users Table</h4>
-                <a href="{{route('user.create')}}" class="btn btn-primary btn-round text-white pull-right">
+                @if(auth()->id()== 1)
+                <a href="{{route('register')}}" class="btn btn-primary btn-round text-white pull-right">
                     Add User
                 </a>
+                @endif
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -36,14 +38,16 @@
                                 <td>{{$val->name}}</td>
                                 <td>{{$val->email}}</td>
                                 <td width="20%" style="display:flex;gap:10px">
-                                    <form method="POST" action="{{ route('user.destroy', $val->id) }}" class="pull-left mr-4">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
-                                    </form>
-                                    <a href="{{route('user.edit' , $val->id)}}" class="btn btn-success btn-sm">
-                                        <i class="bi bi-box-arrow-in-up-right"></i>
-                                    </a>
+                                    @if(auth()->id()== 1)
+                                    @if($val->id!= 1)
+                                        <form method="POST" action="{{ route('user.destroy', $val->id) }}" class="pull-left mr-4">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                        </form>
+                                        @endif
+                                    
+                                    @endif                                   
                                 </td>
                             </tr>
                             @empty
