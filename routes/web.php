@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Models\User;
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +33,6 @@ Route::delete('/user/{user}', function ($user) {
     User::findOrFail($user)->delete();
     return redirect()->back()->with('message', 'Data Deleted.');
 })->name('user.destroy');
+Route::resource('/profile', ProfileController::class)->only('show', 'update');
 
 });
