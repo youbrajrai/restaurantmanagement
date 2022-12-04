@@ -89,6 +89,7 @@ class ProfileController extends Controller
         
         if($request->hasFile('avatar')){
             $image_path = public_path('assets/img/profile/').$user->avatar;
+
             if (File::exists($image_path)) {
                 File::delete($image_path);
             }

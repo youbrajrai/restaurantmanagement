@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use App\Models\User;
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +31,16 @@ Route::get('/user', function () {
     return view('auth.user.index', compact('users'));
 })->name('users');
 Route::delete('/user/{user}', function ($user) {
-    User::findOrFail($user)->delete();
+    $user = User::findOrFail($user);
+    $image_path = public_path('assets/img/profile/').$user->avatar;
+    if (File::exists($image_path)) {
+        File::delete($image_path);
+    }
+    $user->delete();
     return redirect()->back()->with('message', 'Data Deleted.');
 })->name('user.destroy');
 Route::resource('/profile', ProfileController::class)->only('show', 'update');
+Route::resource('/product', ProductController::class);
+
 
 });

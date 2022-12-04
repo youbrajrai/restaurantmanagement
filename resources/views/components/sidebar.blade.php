@@ -25,7 +25,7 @@
       </li><!-- End Categories Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
+        <a class="nav-link collapsed" href="{{route('product.index')}}">
           <i class="bi bi-boxes"></i>
           <span>Products</span>
         </a>
