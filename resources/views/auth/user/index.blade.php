@@ -38,7 +38,7 @@
                                 <td>{{$val->id}}</td>
                                 <td>{{$val->name}}</td>
                                 <td>{{$val->email}}</td>
-                                <td><img src="{{asset($val->avatar)}}" style="object-fit:fill;width:50px;heigth:50px"></td>
+                                <td><img src="{{asset('assets/img/profile/'.$val->avatar)}}" style="object-fit:fill;width:50px;heigth:50px"></td>
                                 <td width="20%" style="display:flex;gap:10px">
                                     @if(auth()->id()== 1)
                                     @if($val->id!= 1)

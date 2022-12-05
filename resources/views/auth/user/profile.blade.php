@@ -23,9 +23,10 @@
             </div>
             <div class="card-body" >
                 <div class="author" >
+                  <!-- {{$user->avatar}} -->
                     <a href="#">
                         <img class="avatar border-gray" style="border-radius: 50%;width: 200px;height:200px;object-fit:fill;"
-                             src="{{$user->avatar}}" alt="...">
+                             src="{{asset('assets/img/profile/'.$user->avatar)}}" alt="...">
                         <h5 class="title">{{$user->name}}</h5>
                     </a>
                     <p class="description">

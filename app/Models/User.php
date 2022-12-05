@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'avatar',
         'password',
     ];
 
@@ -44,8 +45,10 @@ class User extends Authenticatable
     public function getAvatarAttribute($value)
     {
         $avatar = asset('/assets/img/default-avatar.png');
-        if ($value)
-            $avatar = asset('assets/img/profile/' . $value);
+        if ($value){
+            $avatar =  $value;
+        }
+            
 
         return $avatar;
     }    

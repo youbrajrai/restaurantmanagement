@@ -79,27 +79,35 @@ class ProfileController extends Controller
             'avatar' => ['file'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($profile)],
         ]);
-
-        $id = $profile->id;
-        $user = User::find($id);
-        $data = array(
-            'name' => $request->name,
-            'email' => $request->email,
-        );
         
-        if($request->hasFile('avatar')){
-            $image_path = public_path('assets/img/profile/').$user->avatar;
-
+        if (request('avatar')) {
+            $image_path = public_path('assets/img/profile/').$profile->avatar;
             if (File::exists($image_path)) {
                 File::delete($image_path);
-            }
-            $image = $request->file('avatar');
-            $name = $image->getClientOriginalName();
+            }                    
+            $file = request()->file('avatar');
+            $name = $file->getClientOriginalName();
             $filename = time() . '.' . trim($name);
-            $image->move(public_path('assets/img/profile/'),$filename);            
-            $data['avatar'] = $filename;
+            $file->move(public_path() . '/assets/img/profile/', $filename);
+            $attributes['avatar'] = $filename;
         }
-        $create = User::where('id',$id)->update($data);        
+        $profile->update($attributes);
+        return redirect()->back()->with('message', 'Profile updated.');
+        // $id = $profile->id;
+        // $user = User::find($id);
+        // $data = array(
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        // );
+        
+        // if($request->hasFile('avatar')){
+        //     $image = $request->file('avatar');
+        //     $name = $image->getClientOriginalName();
+        //     $filename = time() . '.' . trim($name);
+        //     $image->move(public_path('assets/img/profile/'),$filename);            
+        //     $data['avatar'] = $filename;
+        // }
+        // $create = User::where('id',$id)->update($data);        
         
         return redirect()->back()->with('message', 'Profile updated successfully.') ; 
     }
