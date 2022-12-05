@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use Illuminate\Http\Request;
 use File;
+use App\Http\Requests\BannerStoreRequest;
 class BannerController extends Controller
 {
     /**
@@ -34,7 +35,7 @@ class BannerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BannerStoreRequest $request)
     {
         $attributes = self::attributes($type = 'save');
 		$attributes->save();

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\AboutStoreRequest;
 class AboutUsController extends Controller
 {
     /**
@@ -34,7 +34,7 @@ class AboutUsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AboutStoreRequest $request)
     {
         $data = array(
             'title' => $request->title,

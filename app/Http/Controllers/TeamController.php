@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use File;
+use App\Http\Requests\TeamStoreRequest;
 class TeamController extends Controller
 {
     /**
@@ -34,7 +35,7 @@ class TeamController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(TeamStoreRequest $request)
 	{
 		$attributes = self::attributes($type = 'save');
 		$attributes->save();
