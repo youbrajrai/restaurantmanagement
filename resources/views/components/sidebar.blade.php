@@ -32,14 +32,14 @@
       </li><!-- End Products Page Nav -->      
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" href="{{route('contactus.index')}}">
           <i class="bi bi-envelope"></i>
           <span>Contact Us</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
+        <a class="nav-link collapsed" href="{{route('aboutus.index')}}">
           <i class="bi bi-file-person-fill"></i>
           <span>About Us</span>
         </a>
