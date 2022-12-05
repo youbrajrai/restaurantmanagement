@@ -53,7 +53,7 @@
       </li><!-- End Banner Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
+        <a class="nav-link collapsed" href="{{route('team.index')}}">
           <i class="bi bi-people-fill"></i>
           <span>Teams</span>
         </a>

@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\TeamController;
 use App\Models\User;
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,7 @@ Route::resource('/profile', ProfileController::class)->only('show', 'update');
 Route::resource('/product', ProductController::class);
 Route::resource('/contactus', ContactUsController::class);
 Route::resource('/aboutus', AboutUsController::class);
+Route::resource('/team', TeamController::class);
 
 
 });
