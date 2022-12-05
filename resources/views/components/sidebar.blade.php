@@ -46,7 +46,7 @@
       </li><!-- End About us Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
+        <a class="nav-link collapsed" href="{{route('banner.index')}}">
           <i class="bi bi-box2-heart"></i>
           <span>Banner</span>
         </a>
