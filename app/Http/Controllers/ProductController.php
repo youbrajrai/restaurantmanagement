@@ -44,6 +44,7 @@ class ProductController extends Controller
             'title' => $request->title,
             'category_id' => $request->category_id,
             'price' => $request->price,
+            'content' => $request->content,
         );
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -96,6 +97,7 @@ class ProductController extends Controller
             'title'=> $request->title,
             'category_id'=> $request->category_id,
             'price'=> $request->price,
+            'content' => $request->content,
         );
         if($request->hasFile('image')){
             $image_path = public_path('assets/img/product/').$products->image;

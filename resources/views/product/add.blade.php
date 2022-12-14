@@ -58,6 +58,16 @@
                 @enderror              
             </div>
             <div class="col-12">
+              <label for="content" class="form-label">Content</label>
+              
+              <textarea class="form-control @error('content') is-invalid @enderror" name="content" placeholder="Content">{{old('content')}}</textarea>
+                @error('content')
+                    <span class="text-danger" role="alert">
+                        <p>{{ $message }}</p>
+                    </span>
+                @enderror              
+            </div>               
+            <div class="col-12">
               <label for="title" class="form-label">Image</label>
               <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
                 @error('image')

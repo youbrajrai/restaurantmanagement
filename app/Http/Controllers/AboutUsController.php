@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use App\Http\Requests\AboutStoreRequest;
 class AboutUsController extends Controller
@@ -53,7 +54,9 @@ class AboutUsController extends Controller
      */
     public function show(AboutUs $aboutUs)
     {
-        //
+        $teams = Team::latest()->get();
+        $about = AboutUs::latest()->get();
+        return view('about',compact('about','teams'));
     }
 
     /**

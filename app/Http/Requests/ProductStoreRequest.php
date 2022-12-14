@@ -28,6 +28,7 @@ class ProductStoreRequest extends FormRequest
 			'price' => ['required'],
             'category_id' => ['required'],
 			'image' => ['required', 'mimes:jpeg,png,jpg,gif,svg|max:2048'],
+            'content' => ['required'],
         ];
     }
 }

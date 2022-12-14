@@ -23,7 +23,15 @@ use App\Models\User;
 Auth::routes();
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('main');
+
+Route::get('/about-us', [AboutUsController::class, 'show'])->name('about');
+Route::get('/menu', function () {
+    return view('menu');
+})->name('menu');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::middleware(['auth'])->group(function () {
 

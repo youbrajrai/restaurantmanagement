@@ -28,6 +28,7 @@
                                 <th>Title</th>
                                 <th>Parent Category</th>
                                 <th>Price</th>
+                                <th>Description</th>
                                 <th width="20%">Action</th>
                             </tr>
                         </thead>
@@ -42,7 +43,8 @@
                                     {{$val->parent->title}}
                                     @endif
                                 </td>                                
-                                <td>{{$val->price}}</td>                                
+                                <td>{{$val->price}}</td>  
+                                <td>{{$val->content}}</td>                                
                                 <td width="20%" style="display:flex;gap:10px">
                                     <form method="POST" action="{{ route('product.destroy', $val->id) }}" class="pull-left mr-4">
                                         @csrf
