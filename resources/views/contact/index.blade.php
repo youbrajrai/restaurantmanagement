@@ -22,7 +22,9 @@
                         <thead class=" text-primary">
                             <tr>
                                 <th>S.N</th>
-                                <th>Name</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone</th>
                                 <th>Email</th>
                                 <th>Message</th>
                                 <th>Posted at</th>
@@ -33,13 +35,15 @@
                             @forelse($contact as $val)
                             <tr>
                                 <td>{{$val->id}}</td>
-                                <td>{{$val->name}}</td>
+                                <td>{{$val->first_name}}</td>
+                                <td>{{$val->last_name}}</td>
+                                <td>{{$val->phone}}</td>
                                 <td>{{$val->email}}</td>
                                 <td>{{$val->message}}</td>
                                 <td>{{$val->created_at->diffForHumans()}}</td>
 
                                 <td width="20%" style="display:flex;gap:10px">
-                                    <form method="POST" action="{{ route('contact.destroy', $val->id) }}" class="pull-left mr-4">
+                                    <form method="POST" action="{{ route('contactus.destroy', $val->id) }}" class="pull-left mr-4">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>

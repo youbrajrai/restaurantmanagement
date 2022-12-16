@@ -36,14 +36,7 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-		$contact = new ContactUs();
-
-		$contact->name = $request->get('name');
-		$contact->email = $request->get('email');
-		$contact->message = $request->get('message');
-		$contact->save();
-		Mail::to('youbrajrai79@gmail.com')->send(new MessageSent($contact));
-		return redirect()->back()->with('message', 'Thanks for Connecting with us.');
+//
     }
 
     /**
@@ -86,9 +79,9 @@ class ContactUsController extends Controller
      * @param  \App\Models\ContactUs  $contactUs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactUs $contactUs)
-    {
-		ContactUs::findOrFail($contactUs)->delete();
+    public function destroy($id)
+    {   
+		ContactUs::findOrFail($id)->delete();
 		return redirect()->back()->with('message', 'Data Deleted.');
     }
 }

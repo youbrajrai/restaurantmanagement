@@ -1,4 +1,45 @@
 <x-app>
+<style type="text/css">
+
+.product{
+
+    margin: 55px;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    color: #fff;
+
+    background-color: #008B8B;
+
+}
+
+.category{
+
+    display: flex;
+
+}
+
+body{
+
+    background-color: #d2d2d2;
+
+}
+
+.categorys{
+
+    background-color: #00ffff;
+
+    height: 500px;
+
+}
+
+</style>
 <div id="banner" class="banner full-screen-mode parallax">
         <div class="container pr">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -52,191 +93,66 @@
 					</h2>
                         <p class="title-caption text-center">Kush Garden is the fastest, easiest and most convenient way to enjoy the best food of your favourite restaurants at home, at the office or wherever you want to.</p>
                     </div>
-                    <div class="tab-menu">
-                        <div class="slider slider-nav">
-                            <div class="tab-title-menu">
-                                <h2>All</h2>
-                                <p> <i class="flaticon-canape"></i> </p>
+                    <div class="container mt-5 justify-content-center">
+
+                        <div class="row">
+                    
+                            <div class="col-md-12 category">
+
+                                <div class="row">
+
+                                    <ul class="nav nav-tabs">
+
+                                        @foreach ($category as $item)
+
+                                            <li class=" nav-item">
+
+                                                <a href="{{ route('menu',['id' => $item->id]) }}" class="nav-link {{ $catTab == $item->id ? 'active' : '' }}">{{ $item->title }}</a>
+                                                
+                                            </li>
+
+                                        @endforeach
+
+                                    </ul>
+
+                                    <div class="tab-content">
+
+                                        @foreach ($category as $item)
+                                        
+                                            <div class="tab-pane {{ $catTab == $item->id ? 'active' : '' }}" id="home{{ $item->id }}" class="active">
+
+
+                                                    @foreach ($item->products as $element)
+                                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                                            <div class="offer-item">
+                                                                <img src="{{asset('assets/img/product/'.$element->image)}}" alt="" class="img-responsive">
+                                                                <div>
+                                                                    <h3>{{ $element->title}}</h3>
+                                                                    <p>
+                                                                    {!! $element->content !!}
+                                                                    </p>
+                                                                </div>
+                                                                <span class="offer-price">{{ $element->price}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end col -->                                                    
+
+                                                    @endforeach
+
+                                                
+
+                                            </div>
+
+                                        @endforeach
+
+                                    </div>
+
+                                </div>
+
                             </div>
-                            <div class="tab-title-menu">
-                                <h2>MOMOS</h2>
-                                <p> <i class="flaticon-dinner"></i> </p>
-                            </div>
-                            <div class="tab-title-menu">
-                                <h2>DESERTS</h2>
-                                <p> <i class="flaticon-desert"></i> </p>
-                            </div>
-                            <div class="tab-title-menu">
-                                <h2>DRINKS</h2>
-                                <p> <i class="flaticon-coffee"></i> </p>
-                            </div>
+
                         </div>
-                        <div class="slider slider-single">
-                            <div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-01.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>GARLIC BREAD</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">Rs.100</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-02.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>MIXED SALAD</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">Rs.130</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-03.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>BBQ CHICKEN WINGS</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">Rs.200</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                            </div>
-                            <div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-04.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>PIZZA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">Rs.300</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-05.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">Rs.200</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-06.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>SPICY MEATBALLS</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">Rs.120</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                            </div>
-                            <div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHOCOLATE FUDGECAKE</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">Rs.500</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-08.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$9.5</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-09.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$10</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                            </div>
-                            <div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-10.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>MEAT FEAST PIZZA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$12.5</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-09.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$9.5</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                    <div class="offer-item">
-                                        <img src="images/menu-item-thumbnail-08.jpg" alt="" class="img-responsive">
-                                        <div>
-                                            <h3>CHICKEN TIKKA MASALA</h3>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
-                                            </p>
-                                        </div>
-                                        <span class="offer-price">$5.5</span>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                            </div>
-                        </div>
+
                     </div>
                     <!-- end tab-menu -->
                 </div>

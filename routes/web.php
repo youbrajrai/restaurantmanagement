@@ -1,5 +1,6 @@
 <?php
-
+use App\Mail\MessageSent;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
@@ -9,7 +10,12 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\BannerController;
+use App\Http\Requests\ContactStoreRequest;
 use App\Models\User;
+use App\Models\AboutUs;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\ContactUs;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,16 +28,33 @@ use App\Models\User;
 */
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    $about = AboutUs::latest()->get();
+    return view('welcome',compact('about'));
 })->name('main');
 
 Route::get('/about-us', [AboutUsController::class, 'show'])->name('about');
-Route::get('/menu', function () {
-    return view('menu');
+Route::get('/menu', function (Request $request) {
+    $category = Category::with('products')->get();
+    $catTab = isset($request->id) ? $request->id : $category->first()->id;
+    return view('menu',compact('category','catTab'));
 })->name('menu');
 Route::get('/contact', function () {
     return view('contact');
+ 
 })->name('contact');
+Route::post('/contact/create', function (ContactStoreRequest $request) {
+    $contact = new ContactUs();
+
+    $contact->first_name = $request->get('first_name');
+    $contact->last_name = $request->get('last_name');
+    $contact->phone = $request->get('phone');
+    $contact->email = $request->get('email');
+    $contact->message = $request->get('message');
+    $contact->save();
+    // Mail::to('youbrajrai123456@gmail.com')->send(new MessageSent($contact));
+    return redirect()->back()->with('message', 'Thanks for Connecting with us.');   
+})->name('contact.store');
+
 
 Route::middleware(['auth'])->group(function () {
 

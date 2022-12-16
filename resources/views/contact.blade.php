@@ -46,40 +46,73 @@
         <h2 style="font-family: 'nautilus_pompiliusregular'; color: #e75b1e;">How can we help you</h2>
         <p>Please give as much detail as possible so we can route your question properly.</p>
       </div>
+      <form action="{{route('contact.store')}}" method="post">
+      @csrf      
       <div class="row">
         <div class="col-md-11" style="padding:0;">
           <div class="col-sm-6 col-md-6 black"> <span class="input input--nariko">
-            <input class="input__field input__field--nariko" type="text" id="input-20" style="background-color:transparent;" />
+            <input class="input__field input__field--nariko @error('first_name') is-invalid @enderror" name="first_name" type="text" id="input-20" value="{{old('first_name')}}" style="background-color:transparent;" />
             <label class="input__label input__label--nariko" for="input-20"> <span class="input__label-content input__label-content--nariko">First name</span> </label>
-            </span> </div>
+            </span>
+            @error('first_name')
+            <span class="text-danger" role="alert">
+                <p>{{ $message }}</p>
+            </span>
+            @enderror           
+          </div>
           <!--Last name-->
           <div class="col-sm-6 col-md-6 black"> <span class="input input--nariko">
-            <input class="input__field input__field--nariko" type="text" id="input-20" style="background-color:transparent;" />
+            <input class="input__field input__field--nariko @error('last_name') is-invalid @enderror" type="text" name="last_name" id="input-20" value="{{old('last_name')}}" style="background-color:transparent;" />
             <label class="input__label input__label--nariko" for="input-20"> <span class="input__label-content input__label-content--nariko">Last name</span> </label>
-            </span> </div>
+            </span>
+            @error('last_name')
+            <span class="text-danger" role="alert">
+                <p>{{ $message }}</p>
+            </span>
+            @enderror          
+          </div>
           <div class="clearfix"></div>
           <!--Phone Number-->
           <div class="col-sm-6 col-md-6 black"> <span class="input input--nariko">
-            <input class="input__field input__field--nariko" type="text" id="input-20" style="background-color:transparent;" />
+            <input class="input__field input__field--nariko @error('phone') is-invalid @enderror" type="text" id="input-20" name="phone" value="{{old('phone')}}" style="background-color:transparent;" />
             <label class="input__label input__label--nariko" for="input-20"> <span class="input__label-content input__label-content--nariko">Phone Number</span> </label>
-            </span> </div>
+            </span>
+            @error('phone')
+            <span class="text-danger" role="alert">
+                <p>{{ $message }}</p>
+            </span>
+            @enderror          
+          </div>
           <!--Email Address-->
           <div class="col-sm-6 col-md-6 black"> <span class="input input--nariko">
-            <input class="input__field input__field--nariko" type="text" id="input-20" style="background-color:transparent;" />
+            <input class="input__field input__field--nariko @error('email') is-invalid @enderror" type="email" id="input-20" name="email" value="{{old('email')}}" style="background-color:transparent;" />
             <label class="input__label input__label--nariko" for="input-20"> <span class="input__label-content input__label-content--nariko">Email Address</span> </label>
-            </span> </div>
+            </span> 
+            @error('email')
+            <span class="text-danger" role="alert">
+                <p>{{ $message }}</p>
+            </span>
+            @enderror
+          </div>
           <div class="clearfix"></div>
           <!--Message-->
           <div class="col-md-12 message"> <span class="input input--nariko black">
-            <textarea class="input__field input__field--nariko textarea" type="text" id="input-20" style="background-color:transparent;"></textarea>
+            <textarea class="input__field input__field--nariko @error('message') is-invalid @enderror large-box" name="message" type="text" id="input-20" style="background-color:transparent;">{{old('message')}}</textarea>
             <label class="input__label input__label--nariko" for="input-20"> <span class="input__label-content input__label-content--nariko" style="color:#191919;">Message</span> </label>
-            </span> </div>
+            </span>
+            @error('message')
+            <span class="text-danger" role="alert">
+                <p>{{ $message }}</p>
+            </span>
+            @enderror           
+          </div>
           <div class="clearfix"></div>
-          <div class="col-md-12 text-right"> <a href="#" class="menu-all-btn-wht btn-bg">SUBMIT</a> </div>
+          <div class="col-md-12 text-right"> <button type="submit" class="btn btn-primary">Submit</button> </div>
           <div class="clearfix"></div>
         </div>
         <div class="col-md-1"></div>
       </div>
+      </form>
     </div>
     <div class="col-md-4">
       <div class="row margin-top">
