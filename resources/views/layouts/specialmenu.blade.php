@@ -8,76 +8,26 @@
                 </div>
                 <div class="special-box">
                     <div id="owl-demo">
+                    @forelse($products as $val)
                         <div class="item item-type-zoom">
+                        
                             <a href="#" class="item-hover">
-                                <div class="item-info">
+                                <div class="item-info " >
                                     <div class="headline">
-                                        MOMO
+                                        {{$val->title}}
                                         <div class="line"></div>
-                                        <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
+                                        <div class="dit-line">{!!$val->content!!}</div>
                                     </div>
                                 </div>
                             </a>
                             <div class="item-img">
-                                <img src="images/special-menu-1.jpg" alt="sp-menu">
+                                <img src="{{asset('assets/img/product/'.$val->image)}}" style="object-fit:fill;height:300px" alt="..">
                             </div>
+                          
+
                         </div>
-                        <div class="item item-type-zoom">
-                            <a href="#" class="item-hover">
-                                <div class="item-info">
-                                    <div class="headline">
-                                        PIZZA
-                                        <div class="line"></div>
-                                        <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="item-img">
-                                <img src="images/special-menu-2.jpg" alt="sp-menu">
-                            </div>
-                        </div>
-                        <div class="item item-type-zoom">
-                            <a href="#" class="item-hover">
-                                <div class="item-info">
-                                    <div class="headline">
-                                        VEG. ROLL
-                                        <div class="line"></div>
-                                        <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="item-img">
-                                <img src="images/special-menu-3.jpg" alt="sp-menu">
-                            </div>
-                        </div>
-                        <div class="item item-type-zoom">
-                            <a href="#" class="item-hover">
-                                <div class="item-info">
-                                    <div class="headline">
-                                        PIZZA
-                                        <div class="line"></div>
-                                        <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="item-img">
-                                <img src="images/special-menu-1.jpg" alt="sp-menu">
-                            </div>
-                        </div>
-                        <div class="item item-type-zoom">
-                            <a href="#" class="item-hover">
-                                <div class="item-info">
-                                    <div class="headline">
-                                        VEG. ROLL
-                                        <div class="line"></div>
-                                        <div class="dit-line">Lorem ipsum dolor sit amet, consectetur adip aliqua. Ut enim ad minim venia.</div>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="item-img">
-                                <img src="images/special-menu-2.jpg" alt="sp-menu">
-                            </div>
-                        </div>
+                        @empty
+                        @endforelse                          
                     </div>
                 </div>
                 <!-- end special-box -->

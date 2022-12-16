@@ -29,7 +29,8 @@ use App\Models\ContactUs;
 Auth::routes();
 Route::get('/', function () {
     $about = AboutUs::latest()->get();
-    return view('welcome',compact('about'));
+    $products = Product::latest()->get();
+    return view('welcome',compact('about','products'));
 })->name('main');
 
 Route::get('/about-us', [AboutUsController::class, 'show'])->name('about');
